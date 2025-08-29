@@ -16,11 +16,8 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 21
-
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          develocity-url: https://develocity.apache.org
+          java-version: 24
+          check-latest: true
 
       - name: Generate and submit dependency graph
         uses: gradle/actions/dependency-submission@v4
