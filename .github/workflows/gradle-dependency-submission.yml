@@ -30,3 +30,8 @@ jobs:
         check-latest: true
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@017a9effdb900e5b5b2fddfb590a105619dca3c3 # v4.4.2
+      env:
+          DEPENDENCY_GRAPH_INCLUDE_CONFIGURATIONS: "(?i)(^|:)(compileClasspath|runtimeClasspath|testCompileClasspath|testRuntimeClasspath|serverLib|libExt|packaging|runtimeLibs|solrPlatformLibs)$"
+          DEPENDENCY_GRAPH_EXCLUDE_CONFIGURATIONS: "(?i)(^|:)(classpath|.*PluginClasspath|kotlinCompilerClasspath|kaptClasspath|annotationProcessor|detachedConfiguration.*)$"
+          DEPENDENCY_GRAPH_RUNTIME_INCLUDE_CONFIGURATIONS: "(?i)(^|:)runtimeClasspath$"
+          DEPENDENCY_GRAPH_RUNTIME_EXCLUDE_CONFIGURATIONS: "(?i)(^|:)testRuntimeClasspath$"
